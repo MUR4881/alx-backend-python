@@ -19,6 +19,11 @@ async def wait_n(n: int, max_delay: int) -> Sequence[float]:
 
     Returns: a list of wait time(s) {delay}
     '''
+    # delays = []
+    # for f in asyncio.as_completed((eval("wait_random(max_delay), " * n))):
+    #    delay = await f
+    #    delays.append(delay)
 
-    calls = await asyncio.gather(*(wait_random(max_delay) for _ in range(n)))
-    return calls
+    # Using comprehension form of the above
+    return [await f for f in asyncio.as_completed(
+        eval("wait_random(max_delay)," * n))]
