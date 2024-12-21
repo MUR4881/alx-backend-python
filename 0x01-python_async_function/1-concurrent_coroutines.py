@@ -6,11 +6,11 @@ Run a coroutine multiple times to test for
 concurrency
 '''
 import asyncio
-from typing import Sequence, Callable
+from typing import Callable, List
 wait_random: Callable = __import__('0-basic_async_syntax').wait_random
 
 
-async def wait_n(n: int, max_delay: int) -> Sequence[float]:
+async def wait_n(n: int, max_delay: int) -> List[float]:
     '''spawns wait_random n times
 
     Args:
